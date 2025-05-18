@@ -2,40 +2,36 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "assets/fonts/Avenir Next LT Pro Bold Condensed.otf",
-      "sha1": "d3ed3e81f2c54c1579d74bf4e77794ecb13d281a"
+      "path": "assets/fonts/AvenirNextCyr-Bold.ttf",
+      "sha1": "c9a55027184e56afc9eede1c2cd21ad3c6217cbf"
     },
     {
-      "path": "assets/fonts/Avenir Next LT Pro Bold.otf",
-      "sha1": "ac8ad64356a006a6e701d70c3bbf3f6011f91c98"
+      "path": "assets/fonts/AvenirNextCyr-Demi.ttf",
+      "sha1": "a15428daf6c7711fa849ada35a487d2b751f8a05"
     },
     {
-      "path": "assets/fonts/Avenir Next LT Pro Condensed.otf",
-      "sha1": "ac7b63db559a37f709c2aa2efd7ce507fd3ec544"
+      "path": "assets/fonts/AvenirNextCyr-Heavy.ttf",
+      "sha1": "cb2207c84fe30daa71ee4f753b6f9bbfba33136c"
     },
     {
-      "path": "assets/fonts/Avenir Next LT Pro Demi Condensed.otf",
-      "sha1": "b79408b63afe4addf8a2862496f541ab84f0e074"
+      "path": "assets/fonts/AvenirNextCyr-Light.ttf",
+      "sha1": "f89d33fbb1f6db3fa3a5cd6ce60b4628453f2598"
     },
     {
-      "path": "assets/fonts/Avenir Next LT Pro Demi.otf",
-      "sha1": "9f5f8199b646d5fcda786222d96bbfd618de48b8"
+      "path": "assets/fonts/AvenirNextCyr-Medium.ttf",
+      "sha1": "0c8483b3dc6a252958b36658338954150714129d"
     },
     {
-      "path": "assets/fonts/Avenir Next LT Pro Heavy Condensed.otf",
-      "sha1": "85dc2860f4612f70a4a0db797dc9c0d454d0d01c"
+      "path": "assets/fonts/AvenirNextCyr-Regular.ttf",
+      "sha1": "581bf3f11b1fd9ccc58bad25753bebe94e8a782a"
     },
     {
-      "path": "assets/fonts/Avenir Next LT Pro Medium Condensed.otf",
-      "sha1": "7d08977a3de06fe0120c7d92ba4d377c6157ed16"
+      "path": "assets/fonts/AvenirNextCyr-Thin.ttf",
+      "sha1": "a8424c9aa111861addf6f3ec2a1fa50be6ed0050"
     },
     {
-      "path": "assets/fonts/Avenir Next LT Pro Ultra Light Condensed.otf",
-      "sha1": "edec547aae54aaf20b9b3387077215da6638c736"
-    },
-    {
-      "path": "assets/fonts/Avenir Next LT Pro.otf",
-      "sha1": "5431b8a80300b8dd7014f2f1d05c66b3f0d89f38"
+      "path": "assets/fonts/AvenirNextCyr-UltraLight.ttf",
+      "sha1": "069f4a593ed7d98622b8492fac58cbf703cd0657"
     }
   ]
 }

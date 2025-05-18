@@ -15,9 +15,9 @@ function App(): React.JSX.Element {
 
   return (
     <NavigationContainer>
-     
+      <SafeAreaView style={{flex: 1}} >
         <RootNavigator />
-     
+      </SafeAreaView>
     </NavigationContainer>
   );
 }

@@ -49,15 +49,14 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Avenir Next LT Pro Bold Condensed.otf</string>
-		<string>Avenir Next LT Pro Bold.otf</string>
-		<string>Avenir Next LT Pro Condensed.otf</string>
-		<string>Avenir Next LT Pro Demi Condensed.otf</string>
-		<string>Avenir Next LT Pro Demi.otf</string>
-		<string>Avenir Next LT Pro Heavy Condensed.otf</string>
-		<string>Avenir Next LT Pro Medium Condensed.otf</string>
-		<string>Avenir Next LT Pro Ultra Light Condensed.otf</string>
-		<string>Avenir Next LT Pro.otf</string>
+		<string>AvenirNextCyr-Bold.ttf</string>
+		<string>AvenirNextCyr-Demi.ttf</string>
+		<string>AvenirNextCyr-Heavy.ttf</string>
+		<string>AvenirNextCyr-Light.ttf</string>
+		<string>AvenirNextCyr-Medium.ttf</string>
+		<string>AvenirNextCyr-Regular.ttf</string>
+		<string>AvenirNextCyr-Thin.ttf</string>
+		<string>AvenirNextCyr-UltraLight.ttf</string>
 	</array>
 </dict>
 </plist>

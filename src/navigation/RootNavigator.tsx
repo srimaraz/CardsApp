@@ -9,7 +9,7 @@ export const RootNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: COLORS.primary,
+        tabBarActiveTintColor: COLORS.cardGreen,
         tabBarInactiveTintColor: COLORS.inactive,
         tabBarLabelStyle: {
           fontSize: 12,
