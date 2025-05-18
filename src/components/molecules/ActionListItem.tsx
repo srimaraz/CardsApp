@@ -32,7 +32,7 @@ export const ActionListItem = ({
       <Switch
         value={!!value}
         onValueChange={onValueChange}
-        style={{transform: [{scaleX: 0.7}, {scaleY: 0.7}]}}
+        style={styles.switch}
         trackColor={{false: COLORS.white, true: COLORS.cardGreen}}
         thumbColor={COLORS.white}
       />
@@ -55,4 +55,7 @@ const styles = StyleSheet.create({
   textContainer: {flex: 1},
   title: {color: COLORS.textPrimary},
   subtitle: {color: COLORS.textSecondary, marginTop: 2},
+  switch: {
+    transform: [{scaleX: 0.7}, {scaleY: 0.7}],
+  },
 });

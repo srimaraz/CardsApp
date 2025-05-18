@@ -1,17 +1,25 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, ViewStyle } from 'react-native';
 import { COLORS } from '@constants/colors';
-import {  Demi1620 } from './Texts';
+import { Demi1620 } from './Texts';
 
 interface RoundedButtonProps {
   title: string;
   onPress: () => void;
   disabled?: boolean;
   style?: ViewStyle;
+  testID?: string;
 }
 
-const RoundedButton: React.FC<RoundedButtonProps> = ({ title, onPress, disabled, style }) => (
+const RoundedButton: React.FC<RoundedButtonProps> = ({ 
+  title, 
+  onPress, 
+  disabled, 
+  style,
+  testID 
+}) => (
   <TouchableOpacity
+    testID={testID}
     style={[styles.button, disabled && styles.disabled, style]}
     onPress={onPress}
     activeOpacity={0.7}
@@ -36,4 +44,5 @@ const styles = StyleSheet.create({
   disabled: {
     backgroundColor: COLORS.inactive,
   },
-}); 
+});
+ 

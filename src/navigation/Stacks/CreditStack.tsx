@@ -11,4 +11,4 @@ export const CreditStack = () => {
       <Stack.Screen name="CreditMain" component={CreditScreen} />
     </Stack.Navigator>
   );
-}; 
+};

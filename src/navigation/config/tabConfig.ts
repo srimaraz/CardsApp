@@ -9,9 +9,17 @@ import PaymentsIcon from '@assets/icons/Payments';
 import CreditIcon from '@assets/icons/Credit';
 import UserIcon from '@assets/icons/User';
 
+enum TABS {
+  HOME = 'Home',
+  DEBIT_CARD = 'Debit Card',
+  PAYMENTS = 'Payments',
+  CREDIT = 'Credit',
+  PROFILE = 'Profile',
+}
+
 export const TAB_CONFIG = [
   {
-    name: 'Home',
+    name: TABS.HOME,
     component: HomeStack,
     icon: HomeIcon,
     options: {
@@ -19,7 +27,7 @@ export const TAB_CONFIG = [
     },
   },
   {
-    name: 'Debit Card',
+    name: TABS.DEBIT_CARD,
     component: DebitCardStack,
     icon: DebitCardIcon,
     options: {
@@ -27,7 +35,7 @@ export const TAB_CONFIG = [
     },
   },
   {
-    name: 'Payments',
+    name: TABS.PAYMENTS,
     component: PaymentsStack,
     icon: PaymentsIcon,
     options: {
@@ -35,7 +43,7 @@ export const TAB_CONFIG = [
     },
   },
   {
-    name: 'Credit',
+    name: TABS.CREDIT,
     component: CreditStack,
     icon: CreditIcon,
     options: {
@@ -43,7 +51,7 @@ export const TAB_CONFIG = [
     },
   },
   {
-    name: 'Profile',
+    name: TABS.PROFILE,
     component: ProfileStack,
     icon: UserIcon,
     options: {

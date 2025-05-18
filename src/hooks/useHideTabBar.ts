@@ -1,6 +1,7 @@
 import {useLayoutEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import type {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs';
+import {styles} from '@navigation/RootNavigator';
 
 export const useHideTabBar = () => {
   const navigation = useNavigation();
@@ -17,7 +18,7 @@ export const useHideTabBar = () => {
 
     return () => {
       parent.setOptions({
-        tabBarStyle: undefined, // or restore your default style here
+        tabBarStyle: styles.tabBar,
       } as BottomTabNavigationOptions);
     };
   }, [navigation]);

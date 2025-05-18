@@ -31,6 +31,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 
   return (
     <View
+      testID="progress-bar"
       style={[
         styles.bg,
         {
@@ -44,31 +45,29 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     >
       {/* Filled bar */}
       <View
-        style={{
-          backgroundColor: barColor,
-          width: fillWidth,
-          height: '100%',
-          borderTopLeftRadius: borderRadius,
-          borderBottomLeftRadius: borderRadius,
-          borderTopRightRadius: 0,
-          borderBottomRightRadius: 0,
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          bottom: 0,
-        }}
+        testID="progress-bar-fill"
+        style={[
+          styles.fillBar,
+          {
+            backgroundColor: barColor,
+            width: fillWidth,
+            borderTopLeftRadius: borderRadius,
+            borderBottomLeftRadius: borderRadius,
+          },
+        ]}
       />
       {/* Slant */}
       {fillWidth > 0 && fillWidth < containerWidth && (
         <View
-          style={{
-            position: 'absolute',
-            left: fillWidth - slantWidth / 2,
-            width: slantWidth,
-            height: '100%',
-            backgroundColor: barColor,
-            transform: [{ skewX: '-20deg' }],
-          }}
+          testID="progress-bar-slant"
+          style={[
+            styles.slant,
+            {
+              backgroundColor: barColor,
+              left: fillWidth - slantWidth / 2,
+              width: slantWidth,
+            },
+          ]}
         />
       )}
     </View>
@@ -80,5 +79,19 @@ const styles = StyleSheet.create({
     width: '100%',
     overflow: 'hidden',
     position: 'relative',
+  },
+  fillBar: {
+    height: '100%',
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+  },
+  slant: {
+    position: 'absolute',
+    height: '100%',
+    transform: [{ skewX: '-20deg' }],
   },
 }); 

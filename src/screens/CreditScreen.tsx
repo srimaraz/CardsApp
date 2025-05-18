@@ -1,9 +1,22 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import { Demi1420 } from '@components/atoms/Texts';
 import { APP_TEXTS } from '@constants/appTexts';
+import { COLORS } from '@constants/colors';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 export const CreditScreen = () => (
-  <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-    <Text>{APP_TEXTS.CREDIT_SCREEN}</Text>
+  <View style={styles.container}>
+   <Demi1420 style={styles.title}>{APP_TEXTS.CREDIT_SCREEN}</Demi1420>
   </View>
-); 
+);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: COLORS.white,
+  },
+  title: {
+    color: COLORS.primary,
+  },
+});

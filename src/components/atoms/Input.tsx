@@ -10,9 +10,10 @@ interface InputProps {
   keyboardType?: 'default' | 'numeric';
   style?: ViewStyle;
   inputStyle?: TextStyle;
+  testID?: string;
 }
 
-const  Input: React.FC<InputProps> = ({
+const Input: React.FC<InputProps> = ({
   value,
   onChangeText,
   placeholder,
@@ -20,9 +21,11 @@ const  Input: React.FC<InputProps> = ({
   keyboardType = 'default',
   style,
   inputStyle,
+  testID,
 }) => (
   <View style={style}>
     <TextInput
+      testID={testID}
       style={[styles.input, inputStyle, error && styles.inputError]}
       value={value}
       onChangeText={text => {
@@ -62,4 +65,4 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginTop: 4,
   },
-}); 
+});

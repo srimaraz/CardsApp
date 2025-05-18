@@ -1,46 +1,74 @@
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import React, {useCallback} from 'react';
+import {View, StyleSheet, Text} from 'react-native';
 import {COLORS} from '@constants/colors';
-import {APP_TEXTS} from '@constants/appTexts';
 import {Bold2230, Demi1420} from '@components/atoms/Texts';
 import AspireLogo from '@assets/icons/AspireLogo';
 import VisaLogo from '@assets/icons/Visa';
+import {Card} from '@store/cardsSlice';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { APP_TEXTS } from '@constants/appTexts';
 
 interface DebitCardProps {
-  isCardNumberVisible?: boolean;
+  card: Card;
+  isCardNumberVisible: boolean;
 }
 
 export const DebitCard = (props: DebitCardProps) => {
-  const {isCardNumberVisible = true} = props;
+  const {card, isCardNumberVisible} = props;
+  const {metaData, isCardFrozen} = card;
+  const {cardName, cardNumber, expiry, cvv} = metaData;
 
-  const formatCardNumber = (number: string) => {
-    if (isCardNumberVisible) {
-      return number;
-    }
-    // Keep only the last 4 digits, replace rest with bullet points
-    const lastFour = number.slice(-4);
+  const renderCardNumber = useCallback(() => {
+    const digitsOnly = cardNumber.replace(/\s+/g, '');
+    const groups = digitsOnly.match(/.{1,4}/g) || [];
+
     return (
       <View style={styles.numberContainer}>
-        <Demi1420 style={styles.maskedNumber}>•••• •••• •••• </Demi1420>
-        <Demi1420 style={styles.visibleNumber}>{lastFour}</Demi1420>
+        {groups.map((group, groupIndex) => (
+          <View key={groupIndex} style={styles.group}>
+            {group.split('').map((char, charIndex) => {
+              const isLastGroup = groupIndex === groups.length - 1;
+              const shouldShow = isCardNumberVisible || isLastGroup;
+
+              return shouldShow ? (
+                <Demi1420 key={charIndex} style={styles.digit}>
+                  {char}
+                </Demi1420>
+              ) : (
+                <Icon
+                  key={charIndex}
+                  name="circle"
+                  size={10}
+                  color={COLORS.white}
+                  style={styles.dot}
+                />
+              );
+            })}
+          </View>
+        ))}
       </View>
     );
-  };
+  }, [cardNumber, isCardNumberVisible]);
 
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, isCardFrozen && styles.frozenCard]}>
       <View style={styles.issuerContainer}>
         <AspireLogo width={74} height={21} />
       </View>
-      <Bold2230 style={styles.name}>{APP_TEXTS.CARDHOLDER_NAME}</Bold2230>
-      {isCardNumberVisible ? (
-        <Demi1420 style={styles.number}>{APP_TEXTS.CARD_NUMBER}</Demi1420>
-      ) : (
-        formatCardNumber(APP_TEXTS.CARD_NUMBER)
-      )}
+      <Bold2230 style={styles.name}>{cardName}</Bold2230>
+      {renderCardNumber()}
       <View style={styles.row}>
-        <Demi1420 style={styles.meta}>{APP_TEXTS.CARD_THRU}</Demi1420>
-        <Demi1420 style={styles.meta}>{APP_TEXTS.CARD_CVV}</Demi1420>
+        <Demi1420 style={styles.meta}>{APP_TEXTS.CARD_THRU_LABEL} {expiry}</Demi1420>
+        <View style={styles.cvRow}>
+          <Demi1420 style={styles.meta}>{APP_TEXTS.CARD_CVV_LABEL}</Demi1420>
+          {isCardNumberVisible ? (
+            <Demi1420 style={styles.meta}>{cvv}</Demi1420>
+          ) : (
+            <View style={styles.cvvMask}>
+              <Text style={styles.cvvStars}>{APP_TEXTS.CARD_CVV_MASK}</Text>
+            </View>
+          )}
+        </View>
       </View>
       <VisaLogo style={styles.visa} width={74} height={21} />
     </View>
@@ -52,12 +80,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.cardGreen,
     borderRadius: 16,
     padding: 24,
-    shadowColor: COLORS.cardGreen,
-    shadowOffset: {width: 0, height: 8},
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    elevation: 4,
     width: '100%',
+  },
+  frozenCard: {
+    backgroundColor: COLORS.inactive,
   },
   issuerContainer: {
     alignSelf: 'flex-end',
@@ -71,30 +97,62 @@ const styles = StyleSheet.create({
   number: {
     color: COLORS.white,
     letterSpacing: 2,
-    fontSize: 18,
-    marginBottom: 16,
-  },
-  numberContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
-    height: 24,
+    fontSize: 14,
+    textAlign: 'center',
   },
   maskedNumber: {
     color: COLORS.white,
     letterSpacing: 2,
-    fontSize: 24,
-    lineHeight: 24,
+    fontSize: 14,
+    textAlign: 'center',
   },
   visibleNumber: {
     color: COLORS.white,
     letterSpacing: 2,
-    fontSize: 18,
-    lineHeight: 24,
+    fontSize: 14,
+    textAlign: 'center',
   },
   row: {flexDirection: 'row', gap: 32, marginBottom: 8},
   meta: {color: COLORS.white, fontSize: 14},
   visa: {
     alignSelf: 'flex-end',
+  },
+  numberContainer: {
+    flexDirection: 'row',
+    gap: 12,
+    marginBottom: 16,
+  },
+  group: {
+    flexDirection: 'row',
+    gap: 4,
+  },
+  cvRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
+  cvvMask: {
+    height: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    color: COLORS.white,
+    verticalAlign: 'middle',
+    paddingTop: 6,
+  },
+  cvvStars: {
+    fontSize: 22,
+    lineHeight: 22,
+    textAlign: 'center',
+    color: COLORS.white,
+  },
+  digit: {
+    fontSize: 14,
+    color: COLORS.white,
+  },
+  dot: {
+    alignSelf: 'center',
   },
 });

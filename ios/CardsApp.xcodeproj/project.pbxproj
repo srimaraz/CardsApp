@@ -8,18 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-CardsApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-CardsApp.a */; };
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		F59D9A86E1016805B668A3F7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
-		E9844F986EB3435C91555186 /* AvenirNextCyr-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22FC69D05BB54388BC9C7B6C /* AvenirNextCyr-Bold.ttf */; };
 		11ACE20BA83A41CA997F033C /* AvenirNextCyr-Demi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C45D9CB7CC8E47B28E221A26 /* AvenirNextCyr-Demi.ttf */; };
-		F7BEA8FEAEB0457987DC0485 /* AvenirNextCyr-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AC72BC2068D44BEBE8726D5 /* AvenirNextCyr-Heavy.ttf */; };
-		A35D4D7BDED74FD7A9C844DA /* AvenirNextCyr-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 610A3A00D1AE4EEE9FAA7B14 /* AvenirNextCyr-Light.ttf */; };
-		6817D5FD61914728810E8F8B /* AvenirNextCyr-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DEE521D77144A52944CD27A /* AvenirNextCyr-Medium.ttf */; };
-		3F409D10CD03499582DC1552 /* AvenirNextCyr-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1781132DA84C481FBF675550 /* AvenirNextCyr-Regular.ttf */; };
-		817698059AB046CBAA7CC925 /* AvenirNextCyr-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ACD727B21B146F08F7860F3 /* AvenirNextCyr-Thin.ttf */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		31A521FA64F847488871F0F8 /* AvenirNextCyr-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EF65B1F927F4B7E8DF0FF14 /* AvenirNextCyr-UltraLight.ttf */; };
+		3F409D10CD03499582DC1552 /* AvenirNextCyr-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1781132DA84C481FBF675550 /* AvenirNextCyr-Regular.ttf */; };
+		6817D5FD61914728810E8F8B /* AvenirNextCyr-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DEE521D77144A52944CD27A /* AvenirNextCyr-Medium.ttf */; };
+		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
+		817698059AB046CBAA7CC925 /* AvenirNextCyr-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ACD727B21B146F08F7860F3 /* AvenirNextCyr-Thin.ttf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A35D4D7BDED74FD7A9C844DA /* AvenirNextCyr-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 610A3A00D1AE4EEE9FAA7B14 /* AvenirNextCyr-Light.ttf */; };
+		E9844F986EB3435C91555186 /* AvenirNextCyr-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22FC69D05BB54388BC9C7B6C /* AvenirNextCyr-Bold.ttf */; };
+		F59D9A86E1016805B668A3F7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		F7BEA8FEAEB0457987DC0485 /* AvenirNextCyr-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AC72BC2068D44BEBE8726D5 /* AvenirNextCyr-Heavy.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,20 +27,20 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CardsApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CardsApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = CardsApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1781132DA84C481FBF675550 /* AvenirNextCyr-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextCyr-Regular.ttf"; path = "../assets/fonts/AvenirNextCyr-Regular.ttf"; sourceTree = "<group>"; };
+		22FC69D05BB54388BC9C7B6C /* AvenirNextCyr-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextCyr-Bold.ttf"; path = "../assets/fonts/AvenirNextCyr-Bold.ttf"; sourceTree = "<group>"; };
+		2EF65B1F927F4B7E8DF0FF14 /* AvenirNextCyr-UltraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextCyr-UltraLight.ttf"; path = "../assets/fonts/AvenirNextCyr-UltraLight.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-CardsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardsApp.debug.xcconfig"; path = "Target Support Files/Pods-CardsApp/Pods-CardsApp.debug.xcconfig"; sourceTree = "<group>"; };
+		4AC72BC2068D44BEBE8726D5 /* AvenirNextCyr-Heavy.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextCyr-Heavy.ttf"; path = "../assets/fonts/AvenirNextCyr-Heavy.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-CardsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardsApp.release.xcconfig"; path = "Target Support Files/Pods-CardsApp/Pods-CardsApp.release.xcconfig"; sourceTree = "<group>"; };
+		5ACD727B21B146F08F7860F3 /* AvenirNextCyr-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextCyr-Thin.ttf"; path = "../assets/fonts/AvenirNextCyr-Thin.ttf"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-CardsApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CardsApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		610A3A00D1AE4EEE9FAA7B14 /* AvenirNextCyr-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextCyr-Light.ttf"; path = "../assets/fonts/AvenirNextCyr-Light.ttf"; sourceTree = "<group>"; };
+		6DEE521D77144A52944CD27A /* AvenirNextCyr-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextCyr-Medium.ttf"; path = "../assets/fonts/AvenirNextCyr-Medium.ttf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CardsApp/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CardsApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C45D9CB7CC8E47B28E221A26 /* AvenirNextCyr-Demi.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AvenirNextCyr-Demi.ttf"; path = "../assets/fonts/AvenirNextCyr-Demi.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		22FC69D05BB54388BC9C7B6C /* AvenirNextCyr-Bold.ttf */ = {isa = PBXFileReference; name = "AvenirNextCyr-Bold.ttf"; path = "../assets/fonts/AvenirNextCyr-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C45D9CB7CC8E47B28E221A26 /* AvenirNextCyr-Demi.ttf */ = {isa = PBXFileReference; name = "AvenirNextCyr-Demi.ttf"; path = "../assets/fonts/AvenirNextCyr-Demi.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		4AC72BC2068D44BEBE8726D5 /* AvenirNextCyr-Heavy.ttf */ = {isa = PBXFileReference; name = "AvenirNextCyr-Heavy.ttf"; path = "../assets/fonts/AvenirNextCyr-Heavy.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		610A3A00D1AE4EEE9FAA7B14 /* AvenirNextCyr-Light.ttf */ = {isa = PBXFileReference; name = "AvenirNextCyr-Light.ttf"; path = "../assets/fonts/AvenirNextCyr-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6DEE521D77144A52944CD27A /* AvenirNextCyr-Medium.ttf */ = {isa = PBXFileReference; name = "AvenirNextCyr-Medium.ttf"; path = "../assets/fonts/AvenirNextCyr-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1781132DA84C481FBF675550 /* AvenirNextCyr-Regular.ttf */ = {isa = PBXFileReference; name = "AvenirNextCyr-Regular.ttf"; path = "../assets/fonts/AvenirNextCyr-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		5ACD727B21B146F08F7860F3 /* AvenirNextCyr-Thin.ttf */ = {isa = PBXFileReference; name = "AvenirNextCyr-Thin.ttf"; path = "../assets/fonts/AvenirNextCyr-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2EF65B1F927F4B7E8DF0FF14 /* AvenirNextCyr-UltraLight.ttf */ = {isa = PBXFileReference; name = "AvenirNextCyr-UltraLight.ttf"; path = "../assets/fonts/AvenirNextCyr-UltraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

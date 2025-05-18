@@ -11,6 +11,7 @@ interface SpendingLimitBarProps {
   max: number;
   currency?: string;
   label?: string;
+  isCardFrozen?: boolean;
 }
 
 export const SpendingLimitBar: React.FC<SpendingLimitBarProps> = ({
@@ -18,6 +19,7 @@ export const SpendingLimitBar: React.FC<SpendingLimitBarProps> = ({
   max,
   currency = 'S$',
   label = APP_TEXTS.DEBIT_CARD_SPENDING_LIMIT,
+  isCardFrozen = false,
 }) => {
   const percent = Math.min(current / max, 1);
   return (
@@ -25,16 +27,20 @@ export const SpendingLimitBar: React.FC<SpendingLimitBarProps> = ({
       <View style={styles.headerRow}>
         <Medium1420 style={styles.label}>{label}</Medium1420>
         <View style={styles.valuesRow}>
-          <Text style={styles.currentValue}>{currency}{current.toLocaleString()}</Text>
+          <Text style={[styles.currentValue, isCardFrozen && styles.inactiveValue]}>
+            {currency}{current.toLocaleString()}
+          </Text>
           <Text style={styles.divider}>|</Text>
-          <Text style={styles.maxValue}>{currency}{max.toLocaleString()}</Text>
+          <Text style={styles.maxValue}>
+            {currency}{max.toLocaleString()}
+          </Text>
         </View>
       </View>
       <View style={styles.barBg}>
         <ProgressBar
           percent={percent}
-          barColor={COLORS.cardGreen}
-          bgColor={COLORS.cardGreen + '1A'}
+          barColor={isCardFrozen ? COLORS.inactive : COLORS.cardGreen}
+          bgColor={isCardFrozen ? COLORS.lightGray : COLORS.cardGreen + '1F'}
           height={16}
           borderRadius={12}
         />
@@ -45,7 +51,6 @@ export const SpendingLimitBar: React.FC<SpendingLimitBarProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 18,
     marginTop: 24,
   },
   headerRow: {
@@ -67,6 +72,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
+  inactiveValue: {
+    color: COLORS.textSecondary,
+  },
   divider: {
     color: COLORS.inactive,
     marginHorizontal: 4,
@@ -79,4 +87,4 @@ const styles = StyleSheet.create({
   barBg: {
     marginTop: 4,
   },
-}); 
+});

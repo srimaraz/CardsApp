@@ -55,4 +55,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     zIndex: 2,
   },
-}); 
+});
+ 

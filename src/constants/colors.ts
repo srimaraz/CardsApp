@@ -11,4 +11,5 @@ export const COLORS = {
   textSecondary: '#222B45A6',
   textTertiary: '#22222266',
   iconBg: '#325BAF',
+  modalBackdrop: 'rgba(0,0,0,0.3)', // Modal backdrop color
 } as const;

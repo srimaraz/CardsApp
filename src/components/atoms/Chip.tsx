@@ -1,6 +1,6 @@
-import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native';
 import { COLORS } from '@constants/colors';
+import React from 'react';
+import { StyleSheet, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
 import { Demi1216 } from './Texts';
 
 interface ChipProps {

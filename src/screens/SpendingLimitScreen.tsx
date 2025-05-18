@@ -1,26 +1,25 @@
-import React, {useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  KeyboardAvoidingView,
-  Platform,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import HomeIcon from '@assets/icons/Home';
+import Limit2 from '@assets/icons/Limit2';
+import {Chip} from '@components/atoms/Chip';
 import Input from '@components/atoms/Input';
 import RoundedButton from '@components/atoms/RoundedButton';
-import {Chip} from '@components/atoms/Chip';
-import {COLORS} from '@constants/colors';
-import HomeIcon from '@assets/icons/Home';
 import {Bold2432, Medium1420, Regular1318} from '@components/atoms/Texts';
-import Limit2 from '@assets/icons/Limit2';
+import {COLORS} from '@constants/colors';
+import {CURRENCY, QUICK_LIMITS} from '@constants/common';
 import {useNavigation} from '@react-navigation/native';
+import React, {useState} from 'react';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {useHideTabBar} from 'src/hooks/useHideTabBar';
 
-const QUICK_LIMITS = [5000, 10000, 20000];
-const CURRENCY = 'S$';
-
-const SpendingLimitScreen = () => {
+const SpendingLimitScreen = ({route}: {route: any}) => {
+  const {onSuccess} = route.params;
   const navigation = useNavigation();
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
@@ -43,7 +42,7 @@ const SpendingLimitScreen = () => {
 
   const onSave = () => {
     if (validate()) {
-      // Save logic here
+      onSuccess?.(route.params?.cardId, Number(value));
       navigation.goBack();
     }
   };
@@ -55,7 +54,7 @@ const SpendingLimitScreen = () => {
 
   return (
     <KeyboardAvoidingView
-      style={{flex: 1, backgroundColor: COLORS.white}}
+      style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       {/* Header */}
       <View style={styles.topSection}>
@@ -63,22 +62,14 @@ const SpendingLimitScreen = () => {
           <TouchableOpacity
             onPress={() => navigation.goBack()}
             style={styles.backBtn}>
-            <Text style={styles.backArrow}>{'‹'}</Text>
+            <Icon name="angle-left" size={28} color={COLORS.white} />
           </TouchableOpacity>
-          <HomeIcon color={COLORS.cardGreen} />
+          <HomeIcon color={COLORS.cardGreen} height={26} width={26} />
         </View>
         <Bold2432 style={styles.headerTitle}>Spending limit</Bold2432>
       </View>
-      <View
-        style={{
-          backgroundColor: COLORS.white,
-          paddingHorizontal: 24,
-          paddingTop: 32,
-          borderRadius: 30,
-          marginTop: -30,
-        }}>
+      <View style={styles.limitTitleContainer}>
         <View style={styles.row}>
-          {/* Icon can be replaced with your own */}
           <Limit2
             width={20}
             height={20}
@@ -92,11 +83,7 @@ const SpendingLimitScreen = () => {
         <View style={styles.amountRow}>
           <Chip
             label={CURRENCY}
-            style={{
-              paddingVertical: 4,
-              paddingHorizontal: 12,
-              backgroundColor: COLORS.cardGreen,
-            }}
+            style={styles.currencyChip}
             textStyle={{color: COLORS.white}}
           />
           <Input
@@ -141,6 +128,10 @@ const SpendingLimitScreen = () => {
 export default SpendingLimitScreen;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+  },
   topSection: {
     backgroundColor: COLORS.primary,
     paddingHorizontal: 24,
@@ -158,10 +149,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  backArrow: {
-    color: COLORS.white,
-    fontSize: 28,
-    fontWeight: 'bold',
+  limitTitleContainer: {
+    backgroundColor: COLORS.white,
+    paddingHorizontal: 24,
+    paddingTop: 32,
+    borderRadius: 30,
+    marginTop: -30,
   },
   headerTitle: {
     color: COLORS.white,
@@ -172,8 +165,13 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
   },
   card: {
-    backgroundColor: 'red',
     borderRadius: 28,
+  },
+  currencyChip: {
+    paddingVertical: 4,
+    paddingHorizontal: 12,
+    backgroundColor: COLORS.cardGreen,
+    marginHorizontal: 0,
   },
   row: {
     flexDirection: 'row',
@@ -193,20 +191,12 @@ const styles = StyleSheet.create({
   amountRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginHorizontal: 0,
     //marginBottom: 8,
-  },
-  currencyChip: {
-    marginRight: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    borderRadius: 3,
-    fontSize: 16,
-    width: 40,
-    height: 24,
   },
   amountInput: {
     flex: 1,
-    marginLeft: 0,
+    marginLeft: 12,
     justifyContent: 'center',
   },
   amountInputText: {

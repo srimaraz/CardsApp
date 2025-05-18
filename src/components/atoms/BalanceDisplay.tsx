@@ -1,32 +1,59 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {COLORS} from '@constants/colors';
+import {Bold2432, Demi1216} from '@components/atoms/Texts';
 import {APP_TEXTS} from '@constants/appTexts';
-import {Medium1420, Bold2432} from './Texts';
+import {Chip} from './Chip';
 
-export const BalanceDisplay = () => (
-  <View style={styles.container}>
-    <Medium1420 style={styles.label}>{APP_TEXTS.AVAILABLE_BALANCE}</Medium1420>
-    <View style={styles.row}>
-      <View style={styles.currencyTag}>
-        <Text style={styles.currencyText}>{APP_TEXTS.CURRENCY}</Text>
+interface BalanceDisplayProps {
+  balance?: number;
+}
+
+export const BalanceDisplay: React.FC<BalanceDisplayProps> = ({
+  balance = 0,
+}) => {
+  return (
+    <View>
+      <Demi1216 style={styles.label}>{APP_TEXTS.AVAILABLE_BALANCE}</Demi1216>
+      <View style={styles.balanceContainer}>
+        <Chip
+          label={APP_TEXTS.CURRENCY}
+          style={styles.currencyChip}
+          textStyle={styles.currencyChipText}
+        />
+        <Bold2432 style={styles.amount}>{balance.toFixed(2)}</Bold2432>
       </View>
-      <Bold2432 style={styles.amount}>{APP_TEXTS.BALANCE_AMOUNT}</Bold2432>
     </View>
-  </View>
-);
+  );
+};
 
 const styles = StyleSheet.create({
-  container: {marginBottom: 24},
-  label: {color: COLORS.white, marginBottom: 10},
-  row: {flexDirection: 'row', alignItems: 'center'},
-  currencyTag: {
-    backgroundColor: COLORS.cardGreen,
-    borderRadius: 4,
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-    marginRight: 8,
+  container: {
+    margin: 4,
   },
-  currencyText: {color: COLORS.white},
-  amount: {color: COLORS.white},
+  label: {
+    color: COLORS.white,
+    opacity: 0.8,
+  },
+  balanceContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 8,
+  },
+  currency: {
+    color: COLORS.white,
+    marginRight: 4,
+  },
+  currencyChip: {
+    paddingVertical: 4,
+    paddingHorizontal: 12,
+    backgroundColor: COLORS.cardGreen,
+    marginLeft: 0,
+  },
+  currencyChipText: {
+    color: COLORS.white,
+  },
+  amount: {
+    color: COLORS.white,
+  },
 });

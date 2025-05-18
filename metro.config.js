@@ -1,4 +1,4 @@
-const { getDefaultConfig } = require('@react-native/metro-config');
+const {getDefaultConfig} = require('@react-native/metro-config');
 const path = require('path');
 
 /**
@@ -16,7 +16,12 @@ config.resolver = {
     '@screens': path.resolve(__dirname, 'src/screens'),
     '@utils': path.resolve(__dirname, 'src/utils'),
     '@contexts': path.resolve(__dirname, 'src/contexts'),
-    '@navigation': path.resolve(__dirname, 'src/navigation')
+    '@navigation': path.resolve(__dirname, 'src/navigation'),
+    '@assets': path.resolve(__dirname, 'assets'),
+    '@constants': path.resolve(__dirname, 'src/constants'),
+    '@api': path.resolve(__dirname, 'src/api'),
+    '@store': path.resolve(__dirname, 'src/store'),
+    '@config': path.resolve(__dirname, 'src/config'),
   },
 };
 

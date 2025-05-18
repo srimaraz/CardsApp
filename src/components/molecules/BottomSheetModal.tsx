@@ -1,5 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Modal as RNModal, View, StyleSheet, TouchableWithoutFeedback, Animated, Easing, Dimensions, BackHandler } from 'react-native';
+import {
+  Animated,
+  BackHandler,
+  Dimensions,
+  Easing,
+  Modal as RNModal,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+  KeyboardEvent,
+  Platform,
+} from 'react-native';
+import { COLORS } from '@constants/colors';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
@@ -10,11 +22,41 @@ interface BottomSheetModalProps {
   height?: number; // Optional: height of the sheet
 }
 
-export const BottomSheetModal: React.FC<BottomSheetModalProps> = ({ visible, onClose, children, height = 340 }) => {
+export const BottomSheetModal: React.FC<BottomSheetModalProps> = ({
+  visible,
+  onClose,
+  children,
+  height = 340,
+}) => {
   const [isVisible, setIsVisible] = useState(visible);
   const translateY = useRef(new Animated.Value(SCREEN_HEIGHT)).current;
   const backdropOpacity = useRef(new Animated.Value(0)).current;
   const closingRef = useRef(false);
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
+
+  useEffect(() => {
+    const keyboardWillShow = (e: KeyboardEvent) => {
+      setKeyboardHeight(e.endCoordinates.height);
+    };
+
+    const keyboardWillHide = () => {
+      setKeyboardHeight(0);
+    };
+
+    const showSubscription = Keyboard.addListener(
+      Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow',
+      keyboardWillShow,
+    );
+    const hideSubscription = Keyboard.addListener(
+      Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide',
+      keyboardWillHide,
+    );
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
 
   useEffect(() => {
     if (visible) {
@@ -33,10 +75,13 @@ export const BottomSheetModal: React.FC<BottomSheetModalProps> = ({ visible, onC
           useNativeDriver: true,
         }),
       ]).start();
-      const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-        onClose();
-        return true;
-      });
+      const backHandler = BackHandler.addEventListener(
+        'hardwareBackPress',
+        () => {
+          onClose();
+          return true;
+        },
+      );
       return () => backHandler.remove();
     } else if (isVisible && !closingRef.current) {
       closingRef.current = true;
@@ -59,27 +104,28 @@ export const BottomSheetModal: React.FC<BottomSheetModalProps> = ({ visible, onC
     }
   }, [visible, onClose, translateY, backdropOpacity, isVisible]);
 
-  if (!isVisible) return null;
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <RNModal
       visible={true}
       transparent
       animationType="none"
-      onRequestClose={onClose}
-    >
+      onRequestClose={onClose}>
       <TouchableWithoutFeedback onPress={onClose}>
-        <Animated.View style={[styles.backdrop, { opacity: backdropOpacity }]} />
+        <Animated.View style={[styles.backdrop, {opacity: backdropOpacity}]} />
       </TouchableWithoutFeedback>
       <Animated.View
         style={[
           styles.sheet,
           {
             height,
-            transform: [{ translateY }],
+            transform: [{translateY}],
+            bottom: keyboardHeight,
           },
-        ]}
-      >
+        ]}>
         {children}
       </Animated.View>
     </RNModal>
@@ -89,21 +135,21 @@ export const BottomSheetModal: React.FC<BottomSheetModalProps> = ({ visible, onC
 const styles = StyleSheet.create({
   backdrop: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: COLORS.modalBackdrop,
   },
   sheet: {
     position: 'absolute',
     left: 0,
     right: 0,
-    bottom: 0,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.white,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    padding: 24,
+    paddingHorizontal: 24,
+    paddingVertical: 16,
     elevation: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: -2 },
+    shadowColor: COLORS.black,
+    shadowOffset: {width: 0, height: -2},
     shadowOpacity: 0.1,
     shadowRadius: 8,
   },
-}); 
+});
