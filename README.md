@@ -19,37 +19,6 @@ src/
 └── utils/        # Utility functions
 ```
 
-## Developer Notes
-
-### State Management
-- Redux Toolkit for state management with a single source of truth
-- **Redux Saga** middleware for handling complex async operations
-  - Manages side effects and < mock > API calls
-  - Handles optimistic updates and error scenarios
-  - Provides better control over async flow
-
-### Data Management
-- The app uses **MMKV**  storage as the source of truth for all API data
-- API calls are mocked to simulate real-world scenarios while maintaining data persistence
-- **Optimistic updates** are implemented for critical actions (e.g., card freezing) to enhance user experience
-  - UI updates immediately reflect user actions
-  - Failed API calls trigger automatic state rollback
-
-### Testing & Quality
-- Comprehensive test coverage for all components
-- Unit tests ensure component reliability and maintainability
-- Integration tests validate component interactions
-
-### UI/UX Features
-- Smooth animations implemented for:
-  - Scroll interactions
-  - Modal transitions
-  - Card interactions
-- Custom app icon been implemented
-- Visual documentation maintained in the Screenshots folder
-  - Includes both Android and iOS implementations
-  - Documents various app states and interactions
-
 ## Screen Recording
 - Watch the app in action: [**Screen Recording**](https://drive.google.com/drive/folders/1Ak3kxDOj0-dsD64GFPvQU2dMSGSLz91f?usp=sharing)
 
@@ -72,6 +41,37 @@ src/
 <td></td>
 </tr>
 </table>
+
+## Developer Notes
+
+### State Management
+- Redux Toolkit for state management with a single source of truth
+- Redux Saga middleware for handling complex async operations
+  - Manages side effects and API calls
+  - Handles optimistic updates and error scenarios
+  - Provides better control over async flow
+
+### Data Management
+- The app uses MMKV storage as the source of truth for all API data
+- API calls are mocked to simulate real-world scenarios while maintaining data persistence
+- Optimistic updates are implemented for critical actions (e.g., card freezing) to enhance user experience
+  - UI updates immediately reflect user actions
+  - Failed API calls trigger automatic state rollback
+
+### Testing & Quality
+- Comprehensive test coverage for all components
+- Unit tests ensure component reliability and maintainability
+- Integration tests validate component interactions
+
+### UI/UX Features
+- Smooth animations implemented for:
+  - Scroll interactions
+  - Modal transitions
+  - Card interactions
+- Custom app icon designed and implemented
+- Visual documentation maintained in the Screenshots folder
+  - Includes both Android and iOS implementations
+  - Documents various app states and interactions
 
 ## How to Run
 
