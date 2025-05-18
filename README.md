@@ -102,7 +102,7 @@ yarn ios
   - Documents various app states and interactions
 
 ## Screen Recording
-- Watch the app in action: [Screen Recording](https://drive.google.com/drive/folders/1Ak3kxDOj0-dsD64GFPvQU2dMSGSLz91f?usp=sharing)
+- Watch the app in action: [**Screen Recording**](https://drive.google.com/drive/folders/1Ak3kxDOj0-dsD64GFPvQU2dMSGSLz91f?usp=sharing)
 
 ## Screenshots
 <table>
