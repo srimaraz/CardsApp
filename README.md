@@ -19,57 +19,6 @@ src/
 └── utils/        # Utility functions
 ```
 
-## How to Run
-
-### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
-- React Native development environment setup
-- Android Studio (for Android development)
-- Xcode (for iOS development, macOS only)
-
-### Installation Steps
-1. Clone the repository
-```bash
-git clone [repository-url]
-cd CardsApp
-```
-
-2. Install dependencies
-```bash
-npm install
-# or
-yarn install
-```
-
-3. Install iOS dependencies (macOS only)
-```bash
-cd ios
-bundle install
-bundle exec pod install
-cd ..
-```
-
-4. Start the Metro bundler
-```bash
-npm start
-# or
-yarn start
-```
-
-5. Run the app
-```bash
-# For Android
-npm run android
-# or
-yarn android
-
-# For iOS (macOS only)
-npm run ios
-# or
-yarn ios
-```
-
 ## Developer Notes
 
 ### State Management
@@ -123,6 +72,57 @@ yarn ios
 <td></td>
 </tr>
 </table>
+
+## How to Run
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+- React Native development environment setup
+- Android Studio (for Android development)
+- Xcode (for iOS development, macOS only)
+
+### Installation Steps
+1. Clone the repository
+```bash
+git clone [repository-url]
+cd CardsApp
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Install iOS dependencies (macOS only)
+```bash
+cd ios
+bundle install
+bundle exec pod install
+cd ..
+```
+
+4. Start the Metro bundler
+```bash
+npm start
+# or
+yarn start
+```
+
+5. Run the app
+```bash
+# For Android
+npm run android
+# or
+yarn android
+
+# For iOS (macOS only)
+npm run ios
+# or
+yarn ios
+```
 
 # Getting Started
 
