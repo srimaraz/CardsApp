@@ -104,16 +104,16 @@ yarn ios
 ## Screenshots
 <table>
 <tr>
-<td><img src="Screenshots/Home_android.png" alt="Home Screen Android" width="100%"/></td>
 <td><img src="Screenshots/Home_screen_ios.png" alt="Home Screen iOS" width="100%"/></td>
-</tr>
-<tr>
 <td><img src="Screenshots/Home_screen_scrolled.png" alt="Home Screen Scrolled" width="100%"/></td>
-<td><img src="Screenshots/Card_frozen.png" alt="Card Frozen" width="100%"/></td>
 </tr>
 <tr>
+<td><img src="Screenshots/Card_frozen.png" alt="Card Frozen" width="100%"/></td>
 <td><img src="Screenshots/Set_card_limit.png" alt="Set Card Limit" width="100%"/></td>
+</tr>
+<tr>
 <td><img src="Screenshots/Add_new_card.png" alt="Add New Card" width="100%"/></td>
+<td><img src="Screenshots/Home_android.png" alt="Home Screen Android" width="100%"/></td>
 </tr>
 </table>
 
