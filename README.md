@@ -113,7 +113,11 @@ yarn ios
 </tr>
 <tr>
 <td><img src="Screenshots/Add_new_card.png" alt="Add New Card" width="100%"/></td>
+<td><img src="Screenshots/card_number_shown.png" alt="Card Number Shown" width="100%"/></td>
+</tr>
+<tr>
 <td><img src="Screenshots/Home_android.png" alt="Home Screen Android" width="100%"/></td>
+<td></td>
 </tr>
 </table>
 
