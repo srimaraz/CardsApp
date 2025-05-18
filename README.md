@@ -102,14 +102,20 @@ yarn ios
   - Documents various app states and interactions
 
 ## Screenshots
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
-  <img src="Screenshots/Home_screen_ios.png" alt="Home Screen iOS" width="100%"/>
-  <img src="Screenshots/Home_screen_scrolled.png" alt="Home Screen Scrolled" width="100%"/>
-  <img src="Screenshots/Card_frozen.png" alt="Card Frozen" width="100%"/>
-  <img src="Screenshots/Set_card_limit.png" alt="Set Card Limit" width="100%"/>
-  <img src="Screenshots/Add_new_card.png" alt="Add New Card" width="100%"/>
-  <img src="Screenshots/Home_android.png" alt="Home Screen Android" width="100%"/>
-</div>
+<table>
+<tr>
+<td><img src="Screenshots/Home_android.png" alt="Home Screen Android" width="100%"/></td>
+<td><img src="Screenshots/Home_screen_ios.png" alt="Home Screen iOS" width="100%"/></td>
+</tr>
+<tr>
+<td><img src="Screenshots/Home_screen_scrolled.png" alt="Home Screen Scrolled" width="100%"/></td>
+<td><img src="Screenshots/Card_frozen.png" alt="Card Frozen" width="100%"/></td>
+</tr>
+<tr>
+<td><img src="Screenshots/Set_card_limit.png" alt="Set Card Limit" width="100%"/></td>
+<td><img src="Screenshots/Add_new_card.png" alt="Add New Card" width="100%"/></td>
+</tr>
+</table>
 
 # Getting Started
 
