@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { View, StyleSheet, ViewStyle, LayoutChangeEvent } from 'react-native';
 
 interface ProgressBarProps {
@@ -11,7 +11,7 @@ interface ProgressBarProps {
   slantWidth?: number; // width of the slant
 }
 
-export const ProgressBar: React.FC<ProgressBarProps> = ({
+export const ProgressBar = React.memo<ProgressBarProps>(({
   percent,
   barColor,
   bgColor,
@@ -22,57 +22,66 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 }) => {
   const [containerWidth, setContainerWidth] = useState(0);
 
-  const onLayout = (e: LayoutChangeEvent) => {
+  const onLayout = useCallback((e: LayoutChangeEvent) => {
     setContainerWidth(e.nativeEvent.layout.width);
-  };
+  }, []);
 
-  const fillPercent = Math.min(percent, 1);
-  const fillWidth = containerWidth * fillPercent;
+  const fillWidth = useMemo(() => 
+    containerWidth * Math.min(percent, 1)
+  , [percent, containerWidth]);
+
+  const containerStyle = useMemo(() => [
+    styles.bg,
+    {
+      backgroundColor: bgColor,
+      height,
+      borderRadius,
+    },
+    style,
+  ], [bgColor, height, borderRadius, style]);
+
+  const fillBarStyle = useMemo(() => [
+    styles.fillBar,
+    {
+      backgroundColor: barColor,
+      width: fillWidth,
+      borderTopLeftRadius: borderRadius,
+      borderBottomLeftRadius: borderRadius,
+    },
+  ], [barColor, fillWidth, borderRadius]);
+
+  const slantStyle = useMemo(() => 
+    fillWidth > 0 && fillWidth < containerWidth ? [
+      styles.slant,
+      {
+        backgroundColor: barColor,
+        left: fillWidth - slantWidth / 2,
+        width: slantWidth,
+      },
+    ] : null
+  , [fillWidth, containerWidth, barColor, slantWidth]);
 
   return (
     <View
       testID="progress-bar"
-      style={[
-        styles.bg,
-        {
-          backgroundColor: bgColor,
-          height,
-          borderRadius,
-        },
-        style,
-      ]}
+      style={containerStyle}
       onLayout={onLayout}
     >
       {/* Filled bar */}
       <View
         testID="progress-bar-fill"
-        style={[
-          styles.fillBar,
-          {
-            backgroundColor: barColor,
-            width: fillWidth,
-            borderTopLeftRadius: borderRadius,
-            borderBottomLeftRadius: borderRadius,
-          },
-        ]}
+        style={fillBarStyle}
       />
       {/* Slant */}
-      {fillWidth > 0 && fillWidth < containerWidth && (
+      {slantStyle && (
         <View
           testID="progress-bar-slant"
-          style={[
-            styles.slant,
-            {
-              backgroundColor: barColor,
-              left: fillWidth - slantWidth / 2,
-              width: slantWidth,
-            },
-          ]}
+          style={slantStyle}
         />
       )}
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   bg: {

@@ -1,19 +1,19 @@
 import HideIcon from '@assets/icons/Hide';
 import HomeIcon from '@assets/icons/Home';
 import ShowIcon from '@assets/icons/Show';
-import { BalanceDisplay } from '@components/atoms/BalanceDisplay';
-import { SpendingLimitBar } from '@components/atoms/SpendingLimitBar';
-import { Bold2432, Demi1216 } from '@components/atoms/Texts';
-import { ActionListItem } from '@components/molecules/ActionListItem';
-import { AddNewCardModal } from '@components/organisms/AddNewCardModal';
-import { DebitCard } from '@components/organisms/DebitCard';
-import { ActionListConfig, getActionListConfig } from '@config/actionListConfig';
-import { APP_TEXTS } from '@constants/appTexts';
-import { COLORS } from '@constants/colors';
-import { SCREEN_HEIGHT } from '@constants/common';
-import type { Card } from '@store/cardsSlice';
-import { addNewCardRequest, fetchCardsRequest } from '@store/cardsSlice';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import {BalanceDisplay} from '@components/atoms/BalanceDisplay';
+import {SpendingLimitBar} from '@components/atoms/SpendingLimitBar';
+import {Bold2432, Demi1216} from '@components/atoms/Texts';
+import {ActionListItem} from '@components/molecules/ActionListItem';
+import {AddNewCardModal} from '@components/organisms/AddNewCardModal';
+import {DebitCard} from '@components/organisms/DebitCard';
+import {ActionListConfig, getActionListConfig} from '@config/actionListConfig';
+import {APP_TEXTS} from '@constants/appTexts';
+import {COLORS} from '@constants/colors';
+import {SCREEN_HEIGHT} from '@constants/common';
+import type {Card} from '@store/cardsSlice';
+import {addNewCardRequest, fetchCardsRequest} from '@store/cardsSlice';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {
   Animated,
   Dimensions,
@@ -23,7 +23,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const TOP_SECTION_HEIGHT = SCREEN_HEIGHT * 0.3;
 const CARD_WIDTH = Dimensions.get('window').width - 48; // Full width minus padding
@@ -69,37 +69,48 @@ const DebitCardScreen = ({navigation}: {navigation: any}) => {
     navigation,
     setShowAddCardModal,
   );
+  const onAdd = useCallback(
+    (cardName: string) => {
+      const action = addNewCardRequest({cardName});
+      dispatch(action);
+      setShowAddCardModal(false);
+    },
+    [dispatch, setShowAddCardModal],
+  );
 
-  const renderCard = ({item}: {item: Card}) => (
-    <View style={[styles.cardContainer]}>
-      <Pressable
-        onPress={toggleCardNumberVisibility}
-        style={styles.visibilityToggle}>
-        {isCardNumberVisible ? (
-          <HideIcon
-            color={
-              item.isCardFrozen ? (COLORS.inactive as any) : COLORS.cardGreen
-            }
-          />
-        ) : (
-          <ShowIcon
-            color={
-              item.isCardFrozen ? (COLORS.inactive as any) : COLORS.cardGreen
-            }
-          />
-        )}
-        <Demi1216
-          style={[
-            {color: COLORS.cardGreen},
-            item.isCardFrozen && {color: COLORS.textSecondary},
-          ]}>
-          {isCardNumberVisible
-            ? APP_TEXTS.HIDE_CARD_NUMBER
-            : APP_TEXTS.SHOW_CARD_NUMBER}
-        </Demi1216>
-      </Pressable>
-      <DebitCard isCardNumberVisible={isCardNumberVisible} card={item} />
-    </View>
+  const renderCard = useCallback(
+    ({item}: {item: Card}) => (
+      <View style={[styles.cardContainer]}>
+        <Pressable
+          onPress={toggleCardNumberVisibility}
+          style={styles.visibilityToggle}>
+          {isCardNumberVisible ? (
+            <HideIcon
+              color={
+                item.isCardFrozen ? (COLORS.inactive as any) : COLORS.cardGreen
+              }
+            />
+          ) : (
+            <ShowIcon
+              color={
+                item.isCardFrozen ? (COLORS.inactive as any) : COLORS.cardGreen
+              }
+            />
+          )}
+          <Demi1216
+            style={[
+              {color: COLORS.cardGreen},
+              item.isCardFrozen && {color: COLORS.textSecondary},
+            ]}>
+            {isCardNumberVisible
+              ? APP_TEXTS.HIDE_CARD_NUMBER
+              : APP_TEXTS.SHOW_CARD_NUMBER}
+          </Demi1216>
+        </Pressable>
+        <DebitCard isCardNumberVisible={isCardNumberVisible} card={item} />
+      </View>
+    ),
+    [isCardNumberVisible, toggleCardNumberVisibility],
   );
 
   return (
@@ -187,11 +198,7 @@ const DebitCardScreen = ({navigation}: {navigation: any}) => {
       <AddNewCardModal
         visible={showAddCardModal}
         onClose={() => setShowAddCardModal(false)}
-        onAdd={(cardName: string) => {
-          const action = addNewCardRequest({cardName});
-          dispatch(action);
-          setShowAddCardModal(false);
-        }}
+        onAdd={onAdd}
       />
     </SafeAreaView>
   );

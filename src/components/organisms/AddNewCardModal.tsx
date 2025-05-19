@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {BottomSheetModal} from '@components/molecules/BottomSheetModal';
 import Input from '@components/atoms/Input';
@@ -22,7 +22,7 @@ export const AddNewCardModal: React.FC<AddNewCardModalProps> = ({
   const [cardName, setCardName] = useState('');
   const [error, setError] = useState('');
 
-  const handleAdd = () => {
+  const handleAdd = useCallback(() => {
     if (!cardName.trim()) {
       setError(APP_TEXTS.ADD_NEW_CARD_ERROR);
       return;
@@ -31,7 +31,12 @@ export const AddNewCardModal: React.FC<AddNewCardModalProps> = ({
     onAdd(cardName.trim());
     setCardName('');
     onClose();
-  };
+  }, [cardName, onAdd, onClose]);
+
+  const onChangeText = useCallback((text: string) => {
+    setCardName(text);
+    setError('');
+  }, [setCardName, setError]);
 
   return (
     <BottomSheetModal
@@ -41,10 +46,7 @@ export const AddNewCardModal: React.FC<AddNewCardModalProps> = ({
       <Bold2230 style={styles.title}>{APP_TEXTS.ADD_NEW_CARD_TITLE}</Bold2230>
       <Input
         value={cardName}
-        onChangeText={text => {
-          setCardName(text);
-          setError('');
-        }}
+        onChangeText={onChangeText}
         placeholder={APP_TEXTS.ADD_NEW_CARD_PLACEHOLDER}
         error={error}
         style={styles.input}

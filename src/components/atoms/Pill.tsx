@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { TouchableOpacity, Text, StyleSheet, ViewStyle } from 'react-native';
 import { COLORS } from '@constants/colors';
 
@@ -9,15 +9,28 @@ interface PillProps {
   style?: ViewStyle;
 }
 
-export const Pill: React.FC<PillProps> = ({ label, selected, onPress, style }) => (
-  <TouchableOpacity
-    style={[styles.pill, selected && styles.selected, style]}
-    onPress={onPress}
-    activeOpacity={0.7}
-  >
-    <Text style={[styles.text, selected && styles.selectedText]}>{label}</Text>
-  </TouchableOpacity>
-);
+export const Pill = React.memo<PillProps>(({ label, selected, onPress, style }) => {
+  const containerStyle = useMemo(() => [
+    styles.pill,
+    selected && styles.selected,
+    style,
+  ], [selected, style]);
+
+  const textStyle = useMemo(() => [
+    styles.text,
+    selected && styles.selectedText
+  ], [selected]);
+
+  return (
+    <TouchableOpacity
+      style={containerStyle}
+      onPress={onPress}
+      activeOpacity={0.7}
+    >
+      <Text style={textStyle}>{label}</Text>
+    </TouchableOpacity>
+  );
+});
 
 const styles = StyleSheet.create({
   pill: {
@@ -38,4 +51,4 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     fontWeight: 'bold',
   },
-}); 
+});

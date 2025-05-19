@@ -1,6 +1,13 @@
-import React from 'react';
-import { TextInput, View, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native';
-import { COLORS } from '@constants/colors';
+import React, {useCallback} from 'react';
+import {
+  TextInput,
+  View,
+  Text,
+  StyleSheet,
+  ViewStyle,
+  TextStyle,
+} from 'react-native';
+import {COLORS} from '@constants/colors';
 
 interface InputProps {
   value: string;
@@ -22,29 +29,34 @@ const Input: React.FC<InputProps> = ({
   style,
   inputStyle,
   testID,
-}) => (
-  <View style={style}>
-    <TextInput
-      testID={testID}
-      style={[styles.input, inputStyle, error && styles.inputError]}
-      value={value}
-      onChangeText={text => {
-        if (keyboardType === 'numeric') {
-          // Only allow numbers
-          if (/^\d*$/.test(text)) {
-            onChangeText(text);
-          }
-        } else {
+}) => {
+  const handleChangeText = useCallback(
+    (text: string) => {
+      if (keyboardType === 'numeric') {
+        if (/^\d*$/.test(text)) {
           onChangeText(text);
         }
-      }}
-      placeholder={placeholder}
-      keyboardType={keyboardType}
-      placeholderTextColor={COLORS.inactive}
-    />
-    {!!error && <Text style={styles.error}>{error}</Text>}
-  </View>
-);
+      } else {
+        onChangeText(text);
+      }
+    },
+    [keyboardType, onChangeText],
+  );
+  return (
+    <View style={style}>
+      <TextInput
+        testID={testID}
+        style={[styles.input, inputStyle, error && styles.inputError]}
+        placeholder={placeholder}
+        keyboardType={keyboardType}
+        placeholderTextColor={COLORS.inactive}
+        onChangeText={handleChangeText}
+        value={value}
+      />
+      {!!error && <Text style={styles.error}>{error}</Text>}
+    </View>
+  );
+};
 export default Input;
 
 const styles = StyleSheet.create({

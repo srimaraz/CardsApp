@@ -7,7 +7,7 @@ import {Bold2432, Medium1420, Regular1318} from '@components/atoms/Texts';
 import {COLORS} from '@constants/colors';
 import {CURRENCY, QUICK_LIMITS} from '@constants/common';
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -26,7 +26,7 @@ const SpendingLimitScreen = ({route}: {route: any}) => {
 
   useHideTabBar();
 
-  const validate = () => {
+  const validate = useCallback(() => {
     if (!value) {
       setError('Please enter a limit');
       return false;
@@ -38,19 +38,22 @@ const SpendingLimitScreen = ({route}: {route: any}) => {
     }
     setError('');
     return true;
-  };
+  }, [value]);
 
-  const onSave = () => {
+  const onSave = useCallback(() => {
     if (validate()) {
       onSuccess?.(route.params?.cardId, Number(value));
       navigation.goBack();
     }
-  };
+  }, [validate, onSuccess, route.params?.cardId, value, navigation]);
 
-  const onChipPress = (limit: number) => {
-    setValue(limit.toString());
-    setError('');
-  };
+  const onChipPress = useCallback(
+    (limit: number) => {
+      setValue(limit.toString());
+      setError('');
+    },
+    [setError, setValue],
+  );
 
   return (
     <KeyboardAvoidingView

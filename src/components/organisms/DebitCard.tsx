@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import {COLORS} from '@constants/colors';
 import {Bold2230, Demi1420} from '@components/atoms/Texts';
@@ -13,10 +13,15 @@ interface DebitCardProps {
   isCardNumberVisible: boolean;
 }
 
-export const DebitCard = (props: DebitCardProps) => {
+export const DebitCard = React.memo((props: DebitCardProps) => {
   const {card, isCardNumberVisible} = props;
   const {metaData, isCardFrozen} = card;
   const {cardName, cardNumber, expiry, cvv} = metaData;
+
+  const cardStyles = useMemo(() => [
+    styles.card,
+    isCardFrozen && styles.frozenCard,
+  ], [isCardFrozen]);
 
   const renderCardNumber = useCallback(() => {
     const digitsOnly = cardNumber.replace(/\s+/g, '');
@@ -50,8 +55,19 @@ export const DebitCard = (props: DebitCardProps) => {
     );
   }, [cardNumber, isCardNumberVisible]);
 
+  const cvvDisplay = useMemo(() => {
+    if (isCardNumberVisible) {
+      return <Demi1420 style={styles.meta}>{cvv}</Demi1420>;
+    }
+    return (
+      <View style={styles.cvvMask}>
+        <Text style={styles.cvvStars}>{APP_TEXTS.CARD_CVV_MASK}</Text>
+      </View>
+    );
+  }, [isCardNumberVisible, cvv]);
+
   return (
-    <View style={[styles.card, isCardFrozen && styles.frozenCard]}>
+    <View style={cardStyles}>
       <View style={styles.issuerContainer}>
         <AspireLogo width={74} height={21} />
       </View>
@@ -61,19 +77,13 @@ export const DebitCard = (props: DebitCardProps) => {
         <Demi1420 style={styles.meta}>{APP_TEXTS.CARD_THRU_LABEL} {expiry}</Demi1420>
         <View style={styles.cvRow}>
           <Demi1420 style={styles.meta}>{APP_TEXTS.CARD_CVV_LABEL}</Demi1420>
-          {isCardNumberVisible ? (
-            <Demi1420 style={styles.meta}>{cvv}</Demi1420>
-          ) : (
-            <View style={styles.cvvMask}>
-              <Text style={styles.cvvStars}>{APP_TEXTS.CARD_CVV_MASK}</Text>
-            </View>
-          )}
+          {cvvDisplay}
         </View>
       </View>
       <VisaLogo style={styles.visa} width={74} height={21} />
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   card: {

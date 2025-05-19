@@ -1,5 +1,5 @@
 import { COLORS } from '@constants/colors';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
 import { Demi1216 } from './Texts';
 
@@ -10,15 +10,20 @@ interface ChipProps {
   textStyle?: TextStyle;
 }
 
-export const Chip: React.FC<ChipProps> = ({ label, onPress, style,textStyle }) => (
-  <TouchableOpacity
-    style={[styles.chip, style]}
-    onPress={onPress}
-    activeOpacity={0.7}
-  >
-    <Demi1216 style={[styles.text,textStyle]}>{label}</Demi1216>
-  </TouchableOpacity>
-);
+export const Chip = React.memo<ChipProps>(({ label, onPress, style, textStyle }) => {
+  const containerStyle = useMemo(() => [styles.chip, style], [style]);
+  const labelStyle = useMemo(() => [styles.text, textStyle], [textStyle]);
+
+  return (
+    <TouchableOpacity
+      style={containerStyle}
+      onPress={onPress}
+      activeOpacity={0.7}
+    >
+      <Demi1216 style={labelStyle}>{label}</Demi1216>
+    </TouchableOpacity>
+  );
+});
 
 const styles = StyleSheet.create({
   chip: {
